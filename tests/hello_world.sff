@@ -1,0 +1,27 @@
+# Maybe make some language constructs?
+echo("hello, world!")
+
+if thing1 == thing2 && condition1 {
+    echo("All are true")
+}
+else if thing1 != thing2 {
+    # asdf
+}
+
+func print(x) {
+    echo x
+}
+
+class Cat {
+    let age
+    func say_meow() {
+        echo "meow"
+    }
+}
+
+class Tabby from Cat {
+    let color
+}
+
+1 + 6 * 2 /4 - 4
+# is 0

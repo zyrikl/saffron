@@ -1,23 +1,25 @@
-.PHONY: all clean run
+CXX = g++
+CXXFLAGS = -std=c++23 -I./src/includes
 
-COMPILER = g++
-COMPILER_FLAG = -std=c++23 -fmodules-ts
+SRCS := $(shell find . -type f -name "*.cpp")
+OBJS = $(SRCS:.cpp=.o)
+TARGET = saffron
 
-default: all
+all: $(TARGET)
 
-run: all
-	./saffron
-
-all: saffron
-
-saffron: main.o
-	${COMPILER} $^ -o App
+$(TARGET): $(OBJS)
+	$(CXX) $(OBJS) -o $(TARGET)
 
 %.o: %.cpp
-	${COMPILER} -c  ${COMPILER_FLAG} $<
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+install:
+	sudo cp $(TARGET) /usr/local/bin/
+	sudo chmod +x /usr/local/bin/$(TARGET)
+
+build:
+	make
+	make install
 
 clean:
-	@-rm saffron
-	@-rm func.o
-	@-rm main.o
-	@-rm -r gcm.cache
+	rm -f $(OBJS) $(TARGET)
