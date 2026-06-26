@@ -1,4 +1,4 @@
 # Saffron programming language
 Plans
 - Create new version
-- vegetables package manager
+- spices package manager

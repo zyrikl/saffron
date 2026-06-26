@@ -34,17 +34,19 @@ namespace menu {
                 std::cout << "\033[A\033[K";
             }
         }
-        std::cout << "Use up/down arrows to navigate. Press \"enter\" to select.\n";
-        std::cout << "----------------------------------------------------\n";
+        std::cout << "Use up/down arrows to navigate. Press [enter] to select.\n";
+        std::cout << "/==================================================\\\n";
         
         for (size_t i = 0; i < options.size(); ++i) {
             if (static_cast<int>(i) == highlighted) {
-                std::cout << " > " << options[i] << " < \n";
+                std::string repeated_chars(45-options[i].length(), ' ');
+                std::cout << "|| > \x1b[92m" << options[i] << repeated_chars << "\x1b[0m||\n";
             } else {
-                std::cout << "   " << options[i] << "\n";
+                std::string repeated_chars(45-options[i].length(), ' ');
+                std::cout << "||   " << options[i] << repeated_chars << "||\n";
             }
         }
-        std::cout << "----------------------------------------------------\n";
+        std::cout << "\\==================================================/\n";
     }
 
     int setup_menu(const std::vector<std::string>& options) {
@@ -52,9 +54,9 @@ namespace menu {
         int times = 0;
         bool choosing = true;
 
-        while (choosing) {
-            print_menu(options, current_selection, times);
+        print_menu(options, current_selection, times);
 
+        while (choosing) {
             int key = getch();
 
             #ifdef _WIN32
@@ -67,12 +69,15 @@ namespace menu {
                 if (key == 'UP' || key == 72) {
                     current_selection = (current_selection - 1 + options.size()) % options.size();
                     times++;
+                    print_menu(options, current_selection, times);
                 } else if (key == 'DOWN' || key == 80) {
                     current_selection = (current_selection + 1) % options.size();
                     times++;
+                    print_menu(options, current_selection, times);
                 } else if (key == 13) { // enter
                     choosing = false;
                     times++;
+                    print_menu(options, current_selection, times);
                 }
             #else
                 if (key == 27) { 
@@ -81,16 +86,19 @@ namespace menu {
                             case 65: // up
                                 current_selection = (current_selection - 1 + options.size()) % options.size();
                                 times++;
+                                print_menu(options, current_selection, times);
                                 break;
                             case 66: // down
                                 current_selection = (current_selection + 1) % options.size();
                                 times++;
+                                print_menu(options, current_selection, times);
                                 break;
                         }
                     }
                 } else if (key == 10) { // enter
                     choosing = false;
                     times++;
+                    print_menu(options, current_selection, times);
                 }
             #endif
         }
