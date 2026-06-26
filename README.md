@@ -12,6 +12,7 @@ Installation only available for UNIX/POSIX systems. Either build from source or 
 Run the following commands:
 ```bash
 git clone "https://github.com/zyrikl/saffron"
+cd ./saffron
 make build     # You may need to enter your
                # password, don't worry, we
                # are just moving the executable
@@ -21,6 +22,7 @@ make build     # You may need to enter your
 Alternatively, for those who are more wary:
 ```bash
 git clone "https://github.com/zyrikl/saffron"
+cd ./saffron
 make                            # build the executable
 sudo cp ./saffron /usr/local/bin    # copy it over
 sudo chmod +x /usr/local/bin/saffron    # finish the job

@@ -28,6 +28,9 @@ std::string copyright_info = R"(
     This is free software, and you are welcome to redistribute it
     under certain conditions; see the license for details.
 
+    This notices requires no user input. Saffron will automatically
+    load 10 seconds after Saffron is first used.
+
 )";
 
 void run(std::string source) {
@@ -127,7 +130,7 @@ int main(int argc, char *argv[]) {
 
         menu::clear_screen();
         std::cout << logo << std::endl;
-        std::this_thread::sleep_for(std::chrono::milliseconds(3000));
+        std::this_thread::sleep_for(std::chrono::milliseconds(5000));
 
         menu::clear_screen();
         // Might make 1 line below part of menu::setup_menu
