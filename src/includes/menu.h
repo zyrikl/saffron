@@ -7,4 +7,5 @@ namespace menu {
     void clear_screen();
     void print_menu(const std::vector<std::string>& options, int highlighted, int times);
     int setup_menu(const std::vector<std::string>& options);
+    void slow_print(std::string input);
 }

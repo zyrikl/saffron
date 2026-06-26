@@ -1,5 +1,7 @@
 #include "menu.h"
 #include <iostream>
+#include <thread>
+#include <chrono>
 
 #ifdef _WIN32
     #include <conio.h>
@@ -104,5 +106,15 @@ namespace menu {
         }
 
         return current_selection;
+    }
+
+    void slow_print(std::string input) {
+        std::stringstream ss(input);
+        std::string token;
+        
+        while (std::getline(ss, token)) {
+            std::cout << token << std::endl;
+            if (token != "") std::this_thread::sleep_for(std::chrono::milliseconds(200));
+        }
     }
 }

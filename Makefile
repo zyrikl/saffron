@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -std=c++23 -I./src/includes
+CXXFLAGS = -std=c++20 -I./src/includes
 
 SRCS := $(shell find . -type f -name "*.cpp")
 OBJS = $(SRCS:.cpp=.o)
@@ -22,4 +22,4 @@ build:
 	make install
 
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -f $(OBJS) $(TARGET) .saffron_attributes

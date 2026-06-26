@@ -2,8 +2,11 @@
 #include "error.h"
 #include <cctype>
 
-bool is_alpha_numeric(char c) {
+bool is_alpha(char c) {
     return (std::isalpha(c) || c == '_');
+}
+bool is_alpha_numeric(char c) {
+    return (std::isalpha(c) || c == '_' || std::isdigit(c));
 }
 
 Scanner::Scanner(std::string source): source(source) {}
@@ -136,7 +139,7 @@ std::vector<Token> Scanner::scan_tokens() {
             default:
                 if (std::isdigit(c)) {
                     number();
-                } else if (is_alpha_numeric(c)) {
+                } else if (is_alpha(c)) {
                     identifier();
                 } else {
                     error::message("Unexpected character", line, column);
