@@ -1,7 +1,8 @@
 CXX = g++
 CXXFLAGS = -std=c++20 -I./src/includes
 
-SRCS := $(shell find . -type f -name "*.cpp")
+# very messy sources thingy
+SRCS := main.cpp $(shell find ./src -type f -name "*.cpp")
 OBJS = $(SRCS:.cpp=.o)
 TARGET = saffron
 
