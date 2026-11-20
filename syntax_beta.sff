@@ -1,0 +1,21 @@
+# Comment like this
+// this
+/* or this */
+
+// and print with constructs
+echo "Hello, World!"
+
+let age = 10
+// or simply
+x = 5
+
+hello(message) = echo message
+
+// or
+hello1(message) = {
+    echo message
+} // (braces are implied)
+
+if age >= 21 echo "You can drink" else if age < 21 {
+    echo "Not in here!"
+}

@@ -1,5 +1,5 @@
 # Maybe make some language constructs?
-echo("hello, world!")
+echo "hello, world!"
 
 if thing1 == thing2 && condition1 {
     echo("All are true")
